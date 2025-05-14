@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Disorders - KOG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4da6ff;
+            --secondary-color: #2e86de;
+            --text-color: #333;
+            --background-color: #ffffff;
+            --accent-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        .disorders-hero {
+            padding: 8rem 5% 4rem;
+            background:url('./images/image6.jpg') center/cover;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        .disorder-categories {
+            padding: 5rem 5%;
+            background: #f8faf9;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .category-card {
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .disorder-list {
+            padding: 5rem 5%;
+        }
+
+        .disorder-card {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .disorder-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .symptoms-list {
+            columns: 2;
+            margin: 1rem 0;
+        }
+
+        .treatment-approaches {
+            padding: 5rem 5%;
+            background: var(--background-color);
+        }
+
+        .treatment-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .treatment-content {
+            display: none;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+        }
+
+        .treatment-content.active {
+            display: block;
+        }
+
+        .disorder-faq {
+            padding: 5rem 5%;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+
+        /* Updated Footer Styles */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 25px;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .disorder-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .disorder-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">KOG</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="disorders.html">Mental Health</a>
+           
+            <a href="faith.html">Faith & Resilience</a>
+            <a href="quotes.html">Quotes</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="logo">
+            <div class="logo-graphic"></div>
+            KOG
+        </div>
+        <nav>
+            <a href="#">Community</a>
+            <a href="#">Library</a>
+            <a href="#">Help & Support</a>
+            <a href="#" class="cta-button">Get Support</a>
+        </nav>
+    </header>
+
+    <section class="disorders-hero">
+        <h1>Understanding Mental Health Disorders</h1>
+        <p class="subheading">Compassionate information and evidence-based treatment options</p>
+        
+    </section>
+
+    <section class="disorder-categories">
+        <h2 class="section-heading">Common Categories</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <i class="fas fa-brain"></i>
+                <h3>Depression</h3>
+                <p>fatigue, changes in appetite, sleep disturbances, headaches, social withdrawal, loss of motivation, skipping meals, negative thinking </p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-cloud-sun"></i>
+                <h3>Anxiety</h3>
+                <p>panic attacks, restless and irritability, fatigue, difficulty concentrating, trembling or shaking, difficulty sleeping, racing thoughts</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-comment-slash"></i>
+                <h3>Premenstrual syndrome(PMS)</h3>
+                <p>sadness, anxiety, crying spells, irritability, food cravings, appetite loss, poor sleep, too much sleep, trouble concentrating, tiredness</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Eating Disorders</h3>
+                <p>Anorexia, Bulimia, BED,  loss of appetite, lack of energy, lazziness, loss of motivation</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="disorder-list">
+        <h2 class="section-heading">Teenage hormones</h2>
+        
+        <div class="disorder-card">
+            <div class="disorder-icon">
+                <i class="fas fa-hand-holding-medical"></i>
+            </div>
+            <div>
+                <h3>Generalized effects of teenage hormones </h3>
+                <div class="symptoms-list">
+                    <ul>
+                        <li>Mood Swings</li>
+                        <li>Intensified emotions</li>
+                        <li>Sensitivity to stress</li>
+                        <li>Depression</li>
+                    </ul>
+                    <ul>
+                        <li>Persistent anxiety</li>
+                        <li>Sleep disturbances</li>
+                        <li>changes in appetite</li>
+                         <li>Headaches</li>
+                    </ul>
+                
+        </div>
+
+        <!-- Add more disorder cards following same structure -->
+    </section>
+
+    <section class="treatment-approaches">
+        <h2 class="section-heading">DOPAMINE</h2>
+        
+        
+        <div id="therapy" class="treatment-content active">
+            <h3>Whats this?</h3>
+            <p>When you're hot your body produces sweat to cool you down, this enables your body temperature to remain in a state of balance. Now imagine if your normal sweat was replaced by ice or if your body started freezing every time you got hot. The body temperature would be far too low. you would need to do something to increase your body temperature again, and more of it this time, since you’re temperature would be below the normal, but when you get it back up, you would freeze again and have to re-do something to get your temperature back up and the cycle would go on.
+The ice sweat example could be a metaphorical way of describing what happens in your brain during addiction. Every time you eat, watch a movie, a funny video, take alcohol or smoke, your brain produces dopamine which is the reason why after these activities you feel happy, motivated and rewarded.
+<br><br>Dopamine in this case is like the heat. Although your body's state of balance must be maintained so the brain tries to do this by producing grimbles which could be compared to sweat, although unlike sweat (the normal one) they do not make your emotions neutral, like it would make your body temperature constant.
+
+<br><br>Grimbles are like ice sweat they would make you feel slightly sadder or tired, that's the reason why after taking alcohol and soaking into the ecstasy of a drunkard state, one gets a hangover. Since grimbles cause slight pain, a person is forced to use the source of happiness awaken a state of pleasure which only leads to more grimbles and the cycle goes on causing addiction.
+With access to pleasure all the time; on our phones, television, food, drugs. Within a lot of people grimbles are over activated causing pain, dissatisfaction and demotivation which explains why cases of sloth and depression are higher than they have ever been.
+</p>
+            
+        </div>
+        
+        
+    </section>
+
+    <section class="disorder-faq">
+        <h2 class="section-heading">HUMAN PILLS</h2>
+        <div class="faq-item">
+            <h3>understand the human pill</h3>
+            <p>A lot of people’s perception of addiction originates from an experiment carried out in the mid1950s by Dr. James Olds. In this study, a rat was placed in a cage and had unlimited access to two water bottles, one with plain water and another laced with drugs specifically morphine. The rat tasted both the substances and eventually it preferred the water with morphine and took more of it, over time it overdosed and died.<br><br>
+Almost two decades later, Dr. Bruce Alexander thought the previously mentioned experiment was flawed since rats like humans are social creatures and therefore redesigned it, this time in a more spacious environment and with more rats, the rodents had access to food, toys, they were even reproducing. Again two bottles were available, one with plain water and the other with water containing morphine, the rats tasted both the substances although this time showed negligible interest in the drugged water and preferred the plain water even when the concentration of the drug was increased, they still did not become addicted.<br><br>
+The first experiment gives of the impression that addiction lies within chemical bonds whereas the second more clearly portrays it lies within our social bonds. Addictive substances aren’t simple addictive by nature, your environment has to be bruised in one way or another before they have such a powerful effect on you
+</p>
+        </div>
+        
+    </section>
+
+    <section class="emergency-cta">
+        <div class="cta-content">
+            <h2>YOU CAN COUNT ON ME LIKE,I,II,III</h2>
+            <p>A lot of minds are war zones these days because of the change in community structures, with increased divorced rates, rise in single parenthood and the promotion of social media, a lot of basic relationships have become unnecessarily complicated, to make matters worse technological advancements have degraded the value of physical interactions.
+ Like a cell is the basic functional unit of an organism, a is of society. This brings me to the question, do you think you're a good friend? If you said, "Yes." well then good for you. If you said "no", good for you too, admitting that means there's room for change if you want it. Frankly, I would not call myself a good friend, a lot of times I just thank God what I did to deserve such amazing friends yet I can't be to them half what they are to me, but hopefully someday I shall improve in that sector.<br><br>
+Here's an exercise I would like mostly those who declared themselves good friends to carry out but if you didn't feel free:
+<ul>
+<li>1. Think about a close friend of yours whose birthday is always during the holiday</li>
+<li>2. Ask yourself, "Have you ever called this person and told them Happy Birthday or you just posted them like everyone else did?</li>
+</ul>
+</p>
+       <br><br>     
+        </div>
+        <div class="cta-content">
+            <h2>I CAN COUNT ON ME LIKE,I,II,III</h2>
+            <p>A friend in need is a friend indeed, but in order for that to happen, you actually have to be around when you're in need.
+I think my biggest regret is handling my own problems for so long, I look back and say," Girl you were stupid, 8 billion people on this planet and you were struggling alone?"
+After logically thinking about the population and all the labour available to assist in carrying load, now I release burdens regularly, it should actually be a promoted practice under mental hygiene, like a shower for the mind. If something has been bothering me for three days straight, I tell someone about it, emotional contagion does its thing and boom it's our problem now.<br><br>
+It doesn't matter how much help you can get or how many people are available to give it, the fact is, if you don't ask for it you'll probably not get it. This is particularly hard for many people because it requires trust to allow yourself to appear vulnerable to someone help, we build trust by asking for it. A person is only a person because of people and as a human you have to allow your fellow species to participate in your growth.<br><br>
+If you feel weighed down, talk to someone, anyone, a friend, a parent, a sibling, cousin, Jesus, AI, you’re human which means you're a social creature therefore it's psychologically best for you to have people to turn to in times of despair. God is always there but remember sometimes He speaks through people and he might speak through the person you decide to open up to.
+
+</p>
+            
+        </div> 
+
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>KOG</h3>
+                <p>For Your Headspace To Be a Safe Space</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="disorders.html">Mental Health</a>
+                
+            </div>
+            <div class="footer-column">
+                <h3>More Links</h3>
+               
+                <a href="faith.html">Faith & Resilience</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="#">Contact</a>
+            </div>
+            
+        </div>
+    </footer>
+</body>
+</html>
+
+    <script>
+        function showTreatment(treatmentId) {
+            document.querySelectorAll('.treatment-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(treatmentId).classList.add('active');
+        }
+    </script>

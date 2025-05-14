@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - MentalHealth.com</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4da6ff;
+        --secondary-color: #2e86de;
+        --text-color: #333;
+        --background-color: #ffffff;
+        --accent-color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Navigation Styles */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: var(--primary-color);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      /* Previous styles remain, add these new styles */
+
+      .about-hero {
+        padding: 8rem 5% 4rem;
+        background: url("./images/banner2.jpg") center/cover;
+        color: rgb(255, 255, 255);
+        text-align: center;
+      }
+
+      .mission-section {
+        padding: 5rem 5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .mission-image {
+        border-radius: 15px;
+        overflow: hidden;
+        height: 400px;
+        background: #ddd;
+      }
+
+      .story-timeline {
+        padding: 5rem 5%;
+        background: #f8faf9;
+      }
+
+      .timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .timeline-card {
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .timeline-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background: var(--primary-color);
+        z-index: 0;
+      }
+
+      .timeline-year {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .team-section {
+        padding: 5rem 5%;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .team-member {
+        text-align: center;
+      }
+
+      .member-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        overflow: hidden;
+        background: #ddd;
+      }
+
+      .values-section {
+        padding: 5rem 5%;
+        background: var(--background-color);
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .value-card {
+        padding: 2rem;
+        text-align: center;
+        background: var(--primary-color);
+        border-radius: 15px;
+      }
+
+      .value-icon {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      /* CTA Section Styles */
+      .cta-section {
+        padding: 5rem 5%;
+        background: var(--primary-color);
+        color: white;
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .cta-button:first-child {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .cta-button.secondary {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+      }
+
+      /* Footer Styles */
+      footer {
+        background: #059bf2;
+        color: white;
+        padding: 4rem 5%;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-column h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-column a {
+        display: block;
+        color: #ddd;
+        text-decoration: none;
+        margin-bottom: 0.8rem;
+        transition: color 0.3s;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icons a {
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: white;
+      }
+
+      .team-section .member-photo {
+
+        background: url("./images/gal1.jpg") center/cover;
+        background-size: cover;
+      }
+
+      .v-mission .mission-image {
+        background: url("./images/image5.jpg") center/cover;
+        background-size: cover;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mission-section {
+          grid-template-columns: 1fr;
+        }
+
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">KOG</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="disorders.html">Mental Health</a>
+        <a href="faith.html">Faith & Resilience</a>
+        <a href="quotes.html">Quotes</a>
+      </div>
+    </nav>
+
+    <section class="about-hero">
+      <h1>Compassionate Care for Mental Wellness</h1>
+      <p class="subheading">
+        Empowering individuals to achieve emotional well-being through
+        accessible, personalized support
+      </p>
+    </section>
+
+    <section class="mission-section v-mission">
+      <div class="mission-content">
+        <h2>What's KOG</h2>
+        <p>
+          This Website shall enable you to learn one or two things about your
+          mind and how best you can guard it The first few times I heard about
+          mental health disorders and how important it is to ensure your mind is
+          healthy, and a lot of talk about depression and how common it is these
+          days, I just thought people had gone soft but with time, I started
+          identifying people around me actually losing their sanity and I
+          continued to convince myself it was because all the information had
+          forced me to acknowledge their existence and because of that I had
+          started labelling occasional sadness and cold feet as depression and
+          anxiety, I convinced myself. Luckily, I am not the first person to
+          have a painful experience relevant to what I ridiculed, just think
+          about all those formerly rich people who thought they would never be
+          poor, or those couples in which the individuals thought they would
+          never be apart, another example would be the Manchester United fans
+          who thought the team they support would be in the bottom half of the
+          premiere league table. Just like those groups of people, I thought I
+          could never have a mental health disorder. After what occurred in the
+          last third of 2024, I realize that perhaps God not acknowledging our
+          &quot;boundaries&quot; is just a way of Him reminding us who&#39;s
+          boss.
+        </p>
+      </div>
+      <div class="mission-image">
+        <!-- Add team photo or relevant image -->
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h2 class="section-heading">Project Lead</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-photo">
+        
+          </div>
+          <h3>Nalubega Akexandria Mulungi</h3>
+          <p>Founder of KOG</p>
+          <p>Senior 4, St Mary's College Namagunga</p>
+    </section>
+    <section>
+      <h1>"Becoming aware is painful, doing something about it is difficult."</h1>
+      <p>
+    The first time I talked to a professional, I was in desperate need of pain relief, if I were on a mission it would be titled “Mission No Pain After Session”. After the session, I was far from saying, “Mission accomplished!”.<br> I may have actually been thinking “This is a mission impossible.” 
+      </p>
+      <p>Now a lady was sitting across me, there was food, so I ate as she prepared, and as I was chewing, I thought I love therapy already" but it was time to talk, actually say words and she asks and I answer, at first it seemed like a smooth ride, until it suddenly felt like I was bouncing in potholes while navigating Kampala,  I was in tears and she was looking at me with this immense pity and I was regretting my choices, wondering why she was asking so many questions, so many  hard questions, I came here for the pain to go away not to keep the pain and get homework a long side it. 
+<br><br>A few sessions later I realize therapy is not really a pain relief center, actually it could increase the pain in earlier parts, it's purpose is to enable you understand yourself more and why you feel the way you do in certain situations. It can be incredibly painful at first but professionals exist to help navigate that.
+<br><br>Going through such steps to acknowledge your emotions actually protects the people around you, preventing you from having dramatic breakdowns that could bruise those you care about, and hurt people hurt people so you could prevent that cycle. <br><br>
+You don't have to go to a professional, when you're insanely angry or deeply sad are you hungry, lonely or tired? Have you talked to a specific person? Do you feel jealous? If you know what goes on within yourself, you can prevent it other than going around tearing hearts bit by bit and turning into a communal problem due to something that could be so slight.The process is difficult and takes some time but it's not impossible. 
+</p>
+    </section><br><br>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>KOG</h3>
+          <p>For Your Headspace To Be a Safe Space</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="disorders.html">Mental Health</a>
+          
+        </div>
+        <div class="footer-column">
+          <h3>More Links</h3>
+          
+          <a href="faith.html">Faith & Resilience</a>
+          <a href="quotes.html">Quotes</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
